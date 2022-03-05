@@ -4,6 +4,7 @@
     <div class="spinner-border" role="status">
       <span class="sr-only" id="loading">Loading...</span>
     </div>
+    <button id="reloadBtn" onclick="location.reload()">Reload</button>
   </div>
   <table class="table" id="tab" border="2px solid black">
     <thead>
@@ -14,10 +15,10 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let i of lis">
+      <tr *ngFor="let i of todoList">
         <td>{{ i.id }}</td>
+        <td>{{ i.title }}</td>
         <td>{{ i.completed }}</td>
-        <td>{{ i.status }}</td>
       </tr>
     </tbody>
   </table>
