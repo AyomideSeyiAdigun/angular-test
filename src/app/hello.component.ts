@@ -38,7 +38,7 @@ export class HelloComponent implements OnInit {
     }
     function displayErrorBtn() {
       document.getElementById('loading').style.display = 'none';
-      document.getElementById('reloadBtn').style.display = 'block';
+      document.getElementById('reloadBtn').style.display = 'block';kh
     }
   }
 }
