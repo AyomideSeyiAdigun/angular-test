@@ -8,13 +8,16 @@ import { GetListService } from '../get-list.service';
 })
 export class TodosComponent implements OnInit {
   listTodo;
-  constructor(service: GetListService) {
-   this.listTodo=service
-   console.log(this.listTodo)
-    
+  constructor(private service: GetListService) {
+    this.listTodo= service.getNow() 
+
+    console.log(this.listTodo)
   }
 
-  ngOnInit() {}
+ asyncngOnInit() {
+  
+  
+ }
 
   displayTheList = () => {};
 }
