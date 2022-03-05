@@ -8,13 +8,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HelloComponent implements OnInit {
   @Input() name: string;
+  li: any;
+  lis = [];
   constructor(private http: HttpClient) {}
 
   ngOnInit(): void {
     this.http
       .get('https://jsonplaceholder.typicode.com/todos')
       .subscribe((res) => {
-        console.log(res);
+  
+        if (res) {
+          hidespinner();
+        }
+        this.li = res;
+        console.log(this.li);
       });
+
+    function hidespinner() {
+      document.getElementById('loading').style.display = 'none';
+    }
   }
 }
