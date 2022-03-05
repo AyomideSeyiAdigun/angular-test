@@ -1,0 +1,18 @@
+<app-todo></app-todo>
+<table class="table" id="tab" border="2px solid black">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">TITLE</th>
+      <th scope="col">STATUS</th>
+      
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let i of listTodo">
+    <td>{{ i.id }}</td>
+    <td>{{ i.title }}</td>
+    <td>{{ i.completed }}</td>
+  </tr>
+</tbody>
+</table>

@@ -4,11 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello.component';
+import { TodosComponent } from './todos/todos.component';
+import { TodoComponent } from './todo/todo.component';
+import { GetListService } from './get-list.service';
 
 @NgModule({
   imports: [BrowserModule, FormsModule,HttpClientModule ],
-  declarations: [AppComponent, HelloComponent],
+  declarations: [AppComponent,TodosComponent,TodoComponent ],
+  providers:[GetListService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
