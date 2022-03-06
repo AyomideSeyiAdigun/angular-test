@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { TodosComponent } from './todos/todos.component';
 import { TodoComponent } from './todo/todo.component';
 import { GetListService } from './get-list.service';
+import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule,HttpClientModule ],
-  declarations: [AppComponent,TodosComponent,TodoComponent ],
+  declarations: [AppComponent,TodosComponent,TodoComponent,ButtonComponent ],
   providers:[GetListService],
   bootstrap: [AppComponent],
 })

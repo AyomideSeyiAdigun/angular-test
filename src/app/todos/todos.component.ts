@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GetListService } from '../get-list.service';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-todos',
@@ -8,16 +9,12 @@ import { GetListService } from '../get-list.service';
 })
 export class TodosComponent implements OnInit {
   listTodo;
+  listTodo2;
   constructor(private service: GetListService) {
-    this.listTodo= service.getNow() 
-
-    console.log(this.listTodo)
+    this.service.service().subscribe((data) => {
+      this.listTodo = data;
+    });
   }
 
- asyncngOnInit() {
-  
-  
- }
-
-  displayTheList = () => {};
+  ngOnInit() {}
 }
