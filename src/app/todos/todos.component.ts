@@ -8,13 +8,19 @@ import { delay } from 'rxjs/operators';
   styleUrls: ['./todos.component.css'],
 })
 export class TodosComponent implements OnInit {
+  currentState=''
   listTodo;
-  listTodo2;
+ 
   constructor(private service: GetListService) {
     this.service.service().subscribe((data) => {
-      this.listTodo = data;
+      this.listTodo= data;
+      if( this.listTodo.length > 1){
+        this.currentState = 'loaded'
+      }
     });
   }
 
   ngOnInit() {}
+
+
 }
