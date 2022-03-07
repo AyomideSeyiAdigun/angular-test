@@ -5,10 +5,16 @@ import {
   Output,
   OnChanges,
   SimpleChanges,
-  EventEmitter
+  EventEmitter,
 } from '@angular/core';
 import { of } from 'rxjs';
-import { delay,  concatMap } from 'rxjs/operators';
+import { delay, concatMap } from 'rxjs/operators';
+
+export enum buttonState {
+  loaded = 'Reload',
+  error = 'Load Error.Retry',
+  delaying = 'Loaded-and-delaying',
+}
 
 @Component({
   selector: 'app-button',
@@ -18,6 +24,7 @@ import { delay,  concatMap } from 'rxjs/operators';
 })
 export class ButtonComponent implements OnChanges, OnInit {
   @Input() stateChange = '';
+  myBtnState = buttonState;
   loadMessage: string;
   waitingMeassage: string;
   isDisable: boolean;
@@ -28,13 +35,13 @@ export class ButtonComponent implements OnChanges, OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if (this.stateChange === 'loaded') {
       document.getElementById('loading').style.display = 'none';
-      this.loadMessage = 'Loaded-and-delaying ';
+      this.loadMessage = this.myBtnState.delaying;
       document.getElementById('reloadBtn').style.display = 'block';
       this.displayLoaded();
       this.isDisable = true;
     } else if (this.stateChange === 'error') {
       document.getElementById('loading').style.display = 'none';
-      this.loadMessage = 'Load Error.Retry';
+      this.loadMessage = this.myBtnState.error;
       document.getElementById('reloadBtn').style.display = 'block';
     }
   }
@@ -46,16 +53,16 @@ export class ButtonComponent implements OnChanges, OnInit {
         this.waitingMeassage = 'wait ' + e + ' secs';
 
         if (e === 1) {
-          this.stateChanged()
+          this.stateChanged();
           this.isDisable = false;
-          this.loadMessage = 'Reload';
+          this.loadMessage = this.myBtnState.loaded;
           document.getElementById('counterDiv').style.display = 'none';
         }
       });
   }
   stateChanged() {
     this.listStateChange.emit('completed');
-}
+  }
 
   ngOnInit() {}
 }
