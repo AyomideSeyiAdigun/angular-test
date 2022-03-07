@@ -10,7 +10,7 @@ import { TodoDataType } from '../todo-data-type';
 })
 export class TodosComponent implements OnInit {
   currentState: string = '';
-  statusChange:string = '';
+  statusChange: string = '';
   listTodo: TodoDataType[] = [];
 
   constructor(private service: GetListService) {
@@ -27,8 +27,8 @@ export class TodosComponent implements OnInit {
       }
     });
   }
-  changeStatus(status:string) {
-    this.statusChange = status
+  changeStatus(status: string) {
+    this.statusChange = status;
   }
 
   ngOnInit() {}
