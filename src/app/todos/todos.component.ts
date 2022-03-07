@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GetListService } from '../get-list.service';
 import { delay } from 'rxjs/operators';
+import {TodoDataType} from '../todo-data-type'
 
 @Component({
   selector: 'app-todos',
@@ -9,7 +10,7 @@ import { delay } from 'rxjs/operators';
 })
 export class TodosComponent implements OnInit {
   currentState = '';
-  listTodo = [];
+  listTodo: TodoDataType[] = [];
 
   constructor(private service: GetListService) {
     this.service.service().subscribe((data) => {

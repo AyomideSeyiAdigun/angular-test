@@ -11,7 +11,7 @@ import { ButtonComponent } from './button/button.component';
 
 @NgModule({
   imports: [BrowserModule, FormsModule,HttpClientModule ],
-  declarations: [AppComponent,TodosComponent,TodoComponent,ButtonComponent ],
+  declarations: [AppComponent,TodosComponent,TodoComponent,ButtonComponent],
   providers:[GetListService],
   bootstrap: [AppComponent],
 })
