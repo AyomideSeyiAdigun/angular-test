@@ -1,5 +1,5 @@
-<app-todo></app-todo>
-<app-button [stateChange]="currentState" ></app-button>
+<app-todo [changingStatus]="statusChange"></app-todo>
+<app-button [stateChange]="currentState"  (listStateChange)='changeStatus($event)' ></app-button>
 <table class="table" id="tab" border="2px solid black">
   <thead>
     <tr>

@@ -2,11 +2,13 @@ import {
   Component,
   OnInit,
   Input,
+  Output,
   OnChanges,
   SimpleChanges,
+  EventEmitter
 } from '@angular/core';
 import { of } from 'rxjs';
-import { delay, map, tap, concatMap } from 'rxjs/operators';
+import { delay,  concatMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-button',
@@ -19,6 +21,8 @@ export class ButtonComponent implements OnChanges, OnInit {
   loadMessage: string;
   waitingMeassage: string;
   isDisable: boolean;
+
+  @Output() listStateChange = new EventEmitter();
 
   constructor() {}
   ngOnChanges(changes: SimpleChanges) {
@@ -42,12 +46,16 @@ export class ButtonComponent implements OnChanges, OnInit {
         this.waitingMeassage = 'wait ' + e + ' secs';
 
         if (e === 1) {
+          this.stateChanged()
           this.isDisable = false;
           this.loadMessage = 'Reload';
           document.getElementById('counterDiv').style.display = 'none';
         }
       });
   }
+  stateChanged() {
+    this.listStateChange.emit('completed');
+}
 
   ngOnInit() {}
 }
