@@ -9,14 +9,16 @@ import { delay } from 'rxjs/operators';
 })
 export class TodosComponent implements OnInit {
   currentState = '';
-  listTodo;
+  listTodo = [];
 
   constructor(private service: GetListService) {
     this.service.service().subscribe((data) => {
       if (data === '0') {
         this.currentState = 'error';
       } else {
-        this.listTodo = data;
+        for (let i = 0; i < 10; i++) {
+          this.listTodo.push(data[i]);
+        }
         if (this.listTodo.length > 1) {
           this.currentState = 'loaded';
         }
